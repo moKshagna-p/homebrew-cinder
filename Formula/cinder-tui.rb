@@ -1,4 +1,4 @@
-class Cinder < Formula
+class CinderTui < Formula
   desc "Terminal music visualizer for macOS"
   homepage "https://github.com/moKshagna-p/cinder"
   version "1.0.1"
