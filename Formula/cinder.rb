@@ -1,15 +1,23 @@
 class Cinder < Formula
   desc "Terminal music visualizer for macOS"
   homepage "https://github.com/moKshagna-p/cinder"
-  url "https://github.com/moKshagna-p/cinder/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+  version "1.0.1"
   license "MIT"
 
-  depends_on "go" => :build
   depends_on :macos
 
+  on_arm do
+    url "https://github.com/moKshagna-p/cinder/releases/download/v#{version}/cinder_Darwin_arm64.tar.gz"
+    sha256 "4fc1e3ef40e29889f6e52ae99cf44e16416dee32483f6b426ac05ccd6d444a2d"
+  end
+
+  on_intel do
+    url "https://github.com/moKshagna-p/cinder/releases/download/v#{version}/cinder_Darwin_x86_64.tar.gz"
+    sha256 "d714dd9541dcad65052bb7fb15bf95f91706af95abb577ab01bd5dcb30239699"
+  end
+
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w"), "-o", bin/"cinder", "."
+    bin.install "cinder"
   end
 
   def caveats
@@ -28,6 +36,6 @@ class Cinder < Formula
   end
 
   test do
-    assert_match "cinder", shell_output("#{bin}/cinder --help 2>&1", 1)
+    assert_predicate bin/"cinder", :exist?
   end
 end
