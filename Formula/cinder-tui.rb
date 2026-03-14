@@ -5,6 +5,7 @@ class CinderTui < Formula
   license "MIT"
 
   depends_on :macos
+  depends_on "ffmpeg"
 
   on_arm do
     url "https://github.com/moKshagna-p/cinder/releases/download/v#{version}/cinder_Darwin_arm64.tar.gz"
@@ -24,12 +25,15 @@ class CinderTui < Formula
     <<~EOS
       cinder works out of the box with no extra setup.
 
-      Optional enhancements:
-        - For real-time audio reactivity, install ffmpeg:
-            brew install ffmpeg
-          Then set the environment variable when running:
-            CINDER_AUDIO_REACTIVE=1 cinder
+      For audio-reactive system-output visualization:
+        1. Install BlackHole 2ch:
+             brew install --cask blackhole-2ch
+        2. Run:
+             cinder --setup-audio
+        3. After the one-time setup, just run:
+             cinder
 
+      Optional enhancement:
         - For richer now-playing metadata (preferred over AppleScript):
             brew install nowplaying-cli
     EOS
