@@ -1,7 +1,7 @@
 class CinderTui < Formula
   desc "Terminal music visualizer for macOS"
   homepage "https://github.com/moKshagna-p/cinder"
-  version "1.0.2"
+  version "1.0.3"
   license "MIT"
 
   depends_on :macos
@@ -9,12 +9,12 @@ class CinderTui < Formula
 
   on_arm do
     url "https://github.com/moKshagna-p/cinder/releases/download/v#{version}/cinder_Darwin_arm64.tar.gz"
-    sha256 "104686be4fc978d0eacd1f39ed01607b4b597973a758bbc486a56135efad6313"
+    sha256 "6d03139a9983b50099af1ec784a65f01908a36856c30ccbb2c27b608ae86079c"
   end
 
   on_intel do
     url "https://github.com/moKshagna-p/cinder/releases/download/v#{version}/cinder_Darwin_x86_64.tar.gz"
-    sha256 "142f992559e7bd47361ac00c675629262553056e864245ebcf55fc602bdf0654"
+    sha256 "961653ca60ad628398d5aba9a39c207cdaeb22da61b10615cd80d486838c70ea"
   end
 
   def install
